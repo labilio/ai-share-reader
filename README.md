@@ -84,35 +84,35 @@ Assistant: 后续回答
 
 ### A 类 · 服务端渲染（HTTP 提取）
 
-| # | 平台 | 域名 | 备注 |
-|---|------|------|------|
-| 1 | Claude | `claude.ai/share/` | Markdown 格式，保留排版 |
-| 2 | Kimi | `kimi.com/share/` | — |
-| 3 | Perplexity | `perplexity.ai/search/` | Cloudflare 反爬，禁浏览器 |
-| 4 | Poe | `poe.com/s/` | 多 Bot 群聊，按 Bot 名标注 |
-| 5 | Grok | `grok.com/share/` | Cloudflare 反爬，标题需解析 |
-| 6 | 元宝 | `yb.tencent.com/s/` | — |
+| # | 平台 | 域名 |
+|---|------|------|
+| 1 | Claude | `claude.ai/share/` |
+| 2 | Kimi | `kimi.com/share/` |
+| 3 | Perplexity | `perplexity.ai/search/` |
+| 4 | Poe | `poe.com/s/` |
+| 5 | Grok | `grok.com/share/` |
+| 6 | 元宝 | `yb.tencent.com/s/` |
 
 ### B 类 · 客户端 SPA（浏览器提取）
 
-| # | 平台 | 域名 | 备注 |
-|---|------|------|------|
-| 7 | DeepSeek | `chat.deepseek.com/share/` | 基准 SPA，两种提取方式均可 |
-| 8 | 千问 | `qianwen.com/share/chat/` | — |
-| 9 | 智谱 | `chat.z.ai/s/` · `chatglm.cn/share/` | 双域名 |
-| 10 | 豆包 | `doubao.com/thread/` | — |
-| 11 | Minimax | `agent.minimaxi.com` · `agent.minimax.io` | 双域名，中英文思考标签 |
-| 12 | 文心一言 | `yiyan.baidu.com/share/` | 未登录可见 |
-| 13 | Mistral | `chat.mistral.ai/chat/` | 首次需关闭 ToS 弹窗 |
-| 14 | Manus | `manus.im/share/` | 任务回放，过滤执行步骤 |
-| 15 | AnyGen | `anygen.io/task/` | 任务执行，仅保留结果 |
+| # | 平台 | 域名 |
+|---|------|------|
+| 7 | DeepSeek | `chat.deepseek.com/share/` |
+| 8 | 千问 | `qianwen.com/share/chat/` |
+| 9 | 智谱 | `chat.z.ai/s/` · `chatglm.cn/share/` |
+| 10 | 豆包 | `doubao.com/thread/` |
+| 11 | Minimax | `agent.minimaxi.com` · `agent.minimax.io` |
+| 12 | 文心一言 | `yiyan.baidu.com/share/` |
+| 13 | Mistral | `chat.mistral.ai/chat/` |
+| 14 | Manus | `manus.im/share/` |
+| 15 | AnyGen | `anygen.io/task/` |
 
 ### C 类 · 登录遮罩（浏览器提取）
 
-| # | 平台 | 域名 | 备注 |
-|---|------|------|------|
-| 16 | ChatGPT | `chatgpt.com/share/` | 快照可直接获取 |
-| 17 | Gemini | `gemini.google.com/share/` | 必须 JS 提取，用户标"你说" |
+| # | 平台 | 域名 |
+|---|------|------|
+| 16 | ChatGPT | `chatgpt.com/share/` |
+| 17 | Gemini | `gemini.google.com/share/` |
 
 ## 仓库结构
 
