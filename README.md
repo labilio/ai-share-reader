@@ -114,6 +114,8 @@ Assistant: 后续回答
 | 16 | ChatGPT | `chatgpt.com/share/` |
 | 17 | Gemini | `gemini.google.com/share/` |
 
+别担心兼容性——除了三大类的通用策略，我们还为每个平台的"个性"做了单独适配：Manus 的任务回放、AnyGen 的任务执行、Poe 的多 Bot 群聊、Mistral 的 ToS 弹窗、智谱和 Minimax 的双域名、Gemini 的遮罩穿透……每一个都经过真实链接验证。
+
 ## 仓库结构
 
 ```
