@@ -47,6 +47,18 @@ git clone https://github.com/Secret24/ai-share-reader.git ~/.claude/skills/ai-sh
 | 免登录 | ChatGPT、Gemini 无需登录即可读取 |
 | 统一格式 | 所有平台输出统一的 `**User:**` / `**Assistant:**` 对话格式 |
 
+## 触发方式
+
+以下任意一种输入都会自动激活 Skill：
+
+- 直接粘贴 AI 分享链接
+- "帮我读一下这个对话"
+- "这个链接里说了什么？"
+- "提取这个分享的内容"
+- "看看这个 AI 聊天记录"
+
+即使只贴链接、不说任何话，Skill 也会自动识别并开始提取。
+
 ## 使用示例
 
 直接粘贴**任意 AI 对话分享链接**即可，支持夹带广告语的容错输入：

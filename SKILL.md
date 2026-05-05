@@ -2,7 +2,7 @@
 name: ai-share-reader
 description: >
   Read and extract AI chat conversations from share links. Use this skill whenever
-  the user sends a URL from claude.ai/share/, kimi.com/share/, chat.deepseek.com/share/, qianwen.com/share/chat/, chat.z.ai/s/, chatglm.cn/share/, doubao.com/thread/, agent.minimaxi.com/share/, agent.minimax.io/share/, chatgpt.com/share/, gemini.google.com/share/, perplexity.ai/search/, manus.im/share/, anygen.io/task/, poe.com/s/, grok.com/share/, yb.tencent.com/s/, or yiyan.baidu.com/share/, or chat.mistral.ai/chat/.
+  the user sends a URL from claude.ai/share/, kimi.com/share/, chat.deepseek.com/share/, qianwen.com/share/chat/, chat.z.ai/s/, chatglm.cn/share/, doubao.com/thread/, agent.minimaxi.com/share/, agent.minimax.io/share/, chatgpt.com/share/, gemini.google.com/share/, perplexity.ai/search/, manus.im/share/, anygen.io/task/, poe.com/s/, grok.com/share/, yb.tencent.com/s/, yiyan.baidu.com/share/, or chat.mistral.ai/chat/.
   Also use it when the user asks to "read this chat link", "what does this conversation say",
   "extract this dialogue", "show me the chat content", "what's in this share", "pull out the
   messages from this link", or any similar request involving an AI platform share URL. If the
