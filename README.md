@@ -4,11 +4,15 @@
 
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Agent-Agnostic](https://img.shields.io/badge/Agent-Agnostic-blueviolet)]()
+[![Claude Code Skill](https://img.shields.io/badge/Claude_Code-Skill-orange)]()
 
-读取主流 AI 平台分享链接中的对话内容。支持 18 个平台入口，自动识别平台、选择提取策略、输出干净对话。跨 agent 通用。
+**一个给 Claude Code、Codex、Cursor 等 AI Agent 用的 Skill。** 读取主流 AI 平台的分享链接，自动识别 18 个平台入口、选择提取策略、输出干净对话文本。跨 agent 通用。
 
 ```bash
+# 安装到 Claude Code
 git clone https://github.com/Secret24/ai-share-reader.git ~/.claude/skills/ai-share-reader
+
+# 其他 Agent 同样：将仓库放到对应 skills 目录即可
 ```
 
 ## 为什么需要这个 Skill
@@ -70,35 +74,35 @@ git clone https://github.com/Secret24/ai-share-reader.git ~/.claude/skills/ai-sh
 
 ### 服务端渲染（HTTP 提取）
 
-| 平台 | 域名 |
-|------|------|
-| Claude | `claude.ai/share/` |
-| Kimi | `kimi.com/share/` |
-| Perplexity | `perplexity.ai/search/` |
-| Poe | `poe.com/s/` |
-| Grok | `grok.com/share/` |
-| 元宝 | `yb.tencent.com/s/` |
+| # | 平台 | 域名 |
+|---|------|------|
+| 1 | Claude | `claude.ai/share/` |
+| 2 | Kimi | `kimi.com/share/` |
+| 3 | Perplexity | `perplexity.ai/search/` |
+| 4 | Poe | `poe.com/s/` |
+| 5 | Grok | `grok.com/share/` |
+| 6 | 元宝 | `yb.tencent.com/s/` |
 
 ### 客户端 SPA（浏览器提取）
 
-| 平台 | 域名 |
-|------|------|
-| DeepSeek | `chat.deepseek.com/share/` |
-| 千问 | `qianwen.com/share/chat/` |
-| 智谱 | `chat.z.ai/s/` · `chatglm.cn/share/` |
-| 豆包 | `doubao.com/thread/` |
-| Minimax | `agent.minimaxi.com` · `agent.minimax.io` |
-| 文心一言 | `yiyan.baidu.com/share/` |
-| Mistral | `chat.mistral.ai/chat/` |
-| Manus | `manus.im/share/` |
-| AnyGen | `anygen.io/task/` |
+| # | 平台 | 域名 |
+|---|------|------|
+| 7 | DeepSeek | `chat.deepseek.com/share/` |
+| 8 | 千问 | `qianwen.com/share/chat/` |
+| 9 | 智谱 | `chat.z.ai/s/` · `chatglm.cn/share/` |
+| 10 | 豆包 | `doubao.com/thread/` |
+| 11 | Minimax | `agent.minimaxi.com` · `agent.minimax.io` |
+| 12 | 文心一言 | `yiyan.baidu.com/share/` |
+| 13 | Mistral | `chat.mistral.ai/chat/` |
+| 14 | Manus | `manus.im/share/` |
+| 15 | AnyGen | `anygen.io/task/` |
 
 ### 登录遮罩（浏览器提取）
 
-| 平台 | 域名 |
-|------|------|
-| ChatGPT | `chatgpt.com/share/` |
-| Gemini | `gemini.google.com/share/` |
+| # | 平台 | 域名 |
+|---|------|------|
+| 16 | ChatGPT | `chatgpt.com/share/` |
+| 17 | Gemini | `gemini.google.com/share/` |
 
 ## 仓库结构
 
@@ -126,7 +130,9 @@ ai-share-reader/
 │   ├── mistral_sample.md
 │   ├── manus_sample.md
 │   └── anygen_sample.md
-└── dev/                     # 开发笔记
+└── dev/                     # 设计研究与审计
+    ├── ANTHROPIC_SKILL_PATTERNS.md
+    └── ANTHROPIC_SKILLS_FULL_AUDIT.md
 ```
 
 ## Limitations
@@ -136,12 +142,45 @@ ai-share-reader/
 - **部分平台（Perplexity、Grok）** 有 Cloudflare 人机验证，只能用 HTTP 方式提取，不能用浏览器打开。
 - **不支持连续多页对话**。如果分享链接只展示部分对话（如 Poe 的长对话分页），只能提取当前可见部分。
 
-## 设计参考
+## 设计过程
 
-本 Skill 的设计遵循 **Anthropic 官方 Skill 设计规范**，并使用 **skill-creator** 方法论进行迭代开发。
+这个 Skill 不是拍脑袋写的。动工之前，先花时间把行业最优秀的 Skill 是怎么做的搞清楚了。
 
-- Anthropic Skills 官方仓库：[github.com/anthropics/skills](https://github.com/anthropics/skills)
-- 多 agent 适配方案参考了 [huashu-design](https://github.com/alchaincyf/huashu-design) 的跨平台设计
+### 1. 研究 Anthropic 官方设计规范
+
+首先系统学习了 [Anthropic 官方 Skills 仓库](https://github.com/anthropics/skills) 的整套方法论，提炼出核心设计原则：
+
+- **Progressive Disclosure（三级加载）**：元数据 → SKILL.md 正文 → 按需加载资源。Claude 只在触发时才读正文，不要把所有东西塞进上下文
+- **祈使句 + 解释为什么**：写"Extract the conversation"而非"You should extract..."；用原因替代大写的 MUST/ALWAYS
+- **description 是触发核心**：Skill 能不能被正确触发，关键在 frontmatter 的 description，要写得偏"pushy"（Claude 倾向于欠触发）
+- **保持 SKILL.md < 500 行**：超过就拆出 references/，Claude 只读需要的那份
+
+详见 `dev/ANTHROPIC_SKILL_PATTERNS.md`。
+
+### 2. 审计全部 17 个官方 Skill
+
+光知道原则不够——需要看真实案例。于是把 Anthropic 全部 17 个 Skill 逐一拆解，按复杂度分成六个等级（Level 0 ~ Level 5），分析每种文件什么时候该出现、什么时候不该出现：
+
+| 发现 | 结论 |
+|------|------|
+| scripts/ 只在处理二进制/打包/验证时出现 | ai-share-reader 不需要脚本，不加 |
+| examples/ 不限于 .py——internal-comms 就有 `.md` 示例 | 我们的 `examples/` 目录有先例支撑 |
+| 没有一个 Skill 是为了"看起来复杂"而加文件 | 保持诚实：Level 0 就是最合适的结构 |
+
+详见 `dev/ANTHROPIC_SKILLS_FULL_AUDIT.md`。
+
+### 3. 落地到 ai-share-reader
+
+基于以上研究，做了几个刻意选择：
+
+- **SKILL.md 不到 500 行**，不需要拆分 references/——保持简单
+- **examples/ 保留**——每个平台一个 `.md` 样例，既是文档也是测试预期
+- **不用 MUST/ALWAYS 堆砌规则**——每个平台策略写清楚"为什么"这么做
+- **不做假复杂度**——不加 scripts/ 来装点门面，Anthropic 自己都不这么干
+
+### 4. 多 Agent 适配
+
+跨平台适配方案参考了 [huashu-design](https://github.com/alchaincyf/huashu-design) 的设计——工具名不写入指令，能力映射表替代具体工具名，让不同 agent 平台用自己的工具完成相同能力。
 
 ## 许可
 
