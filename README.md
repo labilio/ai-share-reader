@@ -84,7 +84,7 @@ Assistant: 后续回答
 
 ### A 类 · 服务端渲染（HTTP 提取）
 
-| # | 平台 | 域名 |
+| # | 支持平台 | 域名 |
 |---|------|------|
 | 1 | Claude | `claude.ai/share/` |
 | 2 | Kimi | `kimi.com/share/` |
@@ -95,7 +95,7 @@ Assistant: 后续回答
 
 ### B 类 · 客户端 SPA（浏览器提取）
 
-| # | 平台 | 域名 |
+| # | 支持平台 | 域名 |
 |---|------|------|
 | 7 | DeepSeek | `chat.deepseek.com/share/` |
 | 8 | 千问 | `qianwen.com/share/chat/` |
@@ -109,16 +109,18 @@ Assistant: 后续回答
 
 ### C 类 · 登录遮罩（浏览器提取）
 
-| # | 平台 | 域名 |
+| # | 支持平台 | 域名 |
 |---|------|------|
 | 16 | ChatGPT | `chatgpt.com/share/` |
 | 17 | Gemini | `gemini.google.com/share/` |
+
+
 
 ### 其他补充说明
 
 **别担心兼容性问题！我们有专门适配！**
 
-| 平台           | 适配对象              |
+| 支持平台       | 适配对象              |
 | -------------- | --------------------- |
 | Manus          | 任务回放部分          |
 | AnyGen         | 任务执行部分          |
