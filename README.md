@@ -34,7 +34,7 @@ git clone https://github.com/Secret24/ai-share-reader.git ~/.claude/skills/ai-sh
 
 **这个需求一直存在，但从来没有人做过。**  AI 平台的分享链接本质上是"人类阅读器"，Agent 无法从中提取结构化对话。
 
-**ai-share-reader 是第一个系统解决这个问题的 Skill。**
+**AI Share Reader 是第一个系统解决这个问题的 Skill。**
 
 **场景二：别人分享给你。**
 
