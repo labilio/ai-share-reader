@@ -114,7 +114,25 @@ Assistant: 后续回答
 | 16 | ChatGPT | `chatgpt.com/share/` |
 | 17 | Gemini | `gemini.google.com/share/` |
 
-别担心兼容性——除了三大类的通用策略，我们还为每个平台的"个性"做了单独适配：Manus 的任务回放、AnyGen 的任务执行、Poe 的多 Bot 群聊、Mistral 的 ToS 弹窗、智谱和 Minimax 的双域名、Gemini 的遮罩穿透……每一个都经过真实链接验证。
+### 其他补充说明
+
+**别担心兼容性问题！我们有专门适配！**
+
+| 平台           | 适配对象              |
+| -------------- | --------------------- |
+| Manus          | 任务回放部分          |
+| AnyGen         | 任务执行部分          |
+| Poe            | 多个 AI ChatBot 群聊  |
+| Mistral        | ToS 弹窗              |
+| 智谱 & Minimax | 中国版 & 国际版双域名 |
+| ……             | ……                    |
+
+**实时更新，确保有效**
+
+- 各平台测试链接已储存，实时测试 Skill 方法是否依旧有效
+- 如厂商前端 UI 更新，Skill 会同步更新
+
+
 
 ## 仓库结构
 
