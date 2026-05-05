@@ -1,6 +1,6 @@
 # AI Share Reader
 
-> _分享 AI 对话链接扔进来，干净的对话吐出去。_
+> _AI 分享链接扔进来，干净的对话吐出去。_
 
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Agent-Agnostic](https://img.shields.io/badge/Agent-Agnostic-blueviolet)]()
@@ -49,7 +49,7 @@ git clone https://github.com/Secret24/ai-share-reader.git ~/.claude/skills/ai-sh
 
 ## 使用示例
 
-直接粘贴链接即可，支持夹带广告语的容错输入：
+直接粘贴**任意 AI 对话分享链接**即可，支持夹带广告语的容错输入：
 
 ```
 https://chat.deepseek.com/share/xxxxxxxxxxxxxxxxxxxxxxx
@@ -70,6 +70,9 @@ Skill 自动识别平台并提取：
 
 User: 用户的问题
 Assistant: AI 的回答
+
+User: 追问
+Assistant: 后续回答
 
 User: 追问
 Assistant: 后续回答
