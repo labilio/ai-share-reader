@@ -2,7 +2,7 @@
 name: ai-share-reader
 description: >
   Read and extract AI chat conversations from share links. Use this skill whenever
-  the user sends a URL from chat.deepseek.com/share/, claude.ai/share/, or kimi.com/share/.
+  the user sends a URL from claude.ai/share/, kimi.com/share/, chat.deepseek.com/share/, or qianwen.com/share/chat/.
   Also use it when the user asks to "read this chat link", "what does this conversation say",
   "extract this dialogue", "show me the chat content", "what's in this share", "pull out the
   messages from this link", or any similar request involving an AI platform share URL. If the
@@ -46,8 +46,9 @@ Each turn is clearly labeled with the speaker role. Keep the formatting simple a
 | Platform | Domain | Page type | Required capability |
 |----------|--------|-----------|-------------------|
 | Claude | `claude.ai/share/` | Server-rendered | HTTP fetch |
-| DeepSeek | `chat.deepseek.com/share/` | Client-rendered SPA | Browser automation |
 | Kimi | `kimi.com/share/` | Server-rendered | HTTP fetch |
+| DeepSeek | `chat.deepseek.com/share/` | Client-rendered SPA | Browser automation |
+| 千问 | `qianwen.com/share/chat/` | Client-rendered SPA | Browser automation |
 
 ## Flow
 
@@ -118,6 +119,14 @@ If your platform supports Chrome DevTools Protocol (CDP), use the accessibility 
 | **React fiber walking** | DeepSeek uses React, but AI responses are split across dozens of deeply nested component fragments. Walking the fiber tree can find user questions but cannot reliably reconstruct complete AI responses. Too fragile for production use. |
 | **Scraping CSS class names** | DeepSeek uses hashed CSS module class names that change with every deploy. Any selector built on class names will break unpredictably. |
 
+### 千问 / Qianwen (Client-rendered SPA)
+
+Same strategy as DeepSeek — client-rendered SPA, HTTP fetch alone returns only metadata.
+
+1. Open the share URL in a browser
+2. Wait for the page to fully render
+3. Extract using the same two methods documented in the DeepSeek section above (Method A: JS extraction, Method B: accessibility snapshot)
+
 ### Kimi (Server-rendered)
 
 Kimi share pages render the conversation on the server, so HTTP fetch works directly — same strategy as Claude.
@@ -132,8 +141,8 @@ Kimi share pages render the conversation on the server, so HTTP fetch works dire
 
 ## Graceful Degradation
 
-- **No browser automation available**: Only DeepSeek links are affected. Claude and Kimi work with HTTP fetch alone.
-- **Unrecognized domain**: If the URL doesn't match any known platform, tell the user which platforms are currently supported: Claude, DeepSeek, and Kimi (more coming).
+- **No browser automation available**: DeepSeek and 千问 links are affected. Claude and Kimi work with HTTP fetch alone.
+- **Unrecognized domain**: If the URL doesn't match any known platform, tell the user which platforms are currently supported: Claude, Kimi, DeepSeek, and 千问 (more coming).
 
 ---
 
@@ -148,7 +157,7 @@ Kimi share pages render the conversation on the server, so HTTP fetch works dire
 | 本 skill 需要的能力 | Claude Code 对应 | 其他平台自行映射 |
 |---------------------|-----------------|-----------------|
 | HTTP 抓取页面 | WebFetch | 任何 HTTP client / page fetcher |
-| 浏览器自动化（仅 DeepSeek） | chrome-devtools MCP | 任何 browser automation 工具 |
+| 浏览器自动化（DeepSeek / 千问） | chrome-devtools MCP | 任何 browser automation 工具 |
 
 ### 通用原则
 
@@ -159,5 +168,5 @@ Kimi share pages render the conversation on the server, so HTTP fetch works dire
 ## Dependency Policy
 
 - Prefer HTTP fetch whenever the page is server-rendered (no external dependency needed on most platforms)
-- Browser automation is only needed for client-rendered pages (currently only DeepSeek)
-- Goal: 3 platforms covered, at most 1 special capability required (browser automation for DeepSeek)
+- Browser automation is only needed for client-rendered pages (DeepSeek and 千问)
+- Goal: 4 platforms covered, at most 1 special capability required (browser automation)
