@@ -128,9 +128,6 @@ ai-share-reader/
 │   ├── mistral_sample.md
 │   ├── manus_sample.md
 │   └── anygen_sample.md
-└── dev/                     # 设计研究与审计
-    ├── ANTHROPIC_SKILL_PATTERNS.md
-    └── ANTHROPIC_SKILLS_FULL_AUDIT.md
 ```
 
 ## Limitations
