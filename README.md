@@ -1,18 +1,18 @@
 # AI Share Reader
 
-> _分享链接扔进来，干净的对话吐出去。_
+> _分享 AI 对话链接扔进来，干净的对话吐出去。_
 
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Agent-Agnostic](https://img.shields.io/badge/Agent-Agnostic-blueviolet)]()
 [![Claude Code Skill](https://img.shields.io/badge/Claude_Code-Skill-orange)]()
 
-**一个给 Claude Code、Codex、Openclaw、Hermes 等 AI Agent 用的 Skill。跨 Agent 通用。**
+**一个给 Claude Code、Codex、Openclaw、Hermes 等 AI Agent 用的 Skill。好的 Skill 不挑 Agent。**
 
  读取主流 AI 平台的分享链接，自动识别 18 个平台入口、选择提取策略、输出干净对话文本。
 
 ```bash
 # 安装到 Claude Code 或者你的其他 Agent 工具
-# 将仓库放到对应 skills 目录即可
+
 git clone https://github.com/Secret24/ai-share-reader.git ~/.claude/skills/ai-share-reader
 ```
 
