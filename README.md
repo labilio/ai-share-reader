@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Agent-Agnostic](https://img.shields.io/badge/Agent-Agnostic-blueviolet)]()
-[![Compatible](https://img.shields.io/badge/Compatible-Claude_Code_·_Codex_·_Cursor_·_OpenClaw_·_Hermes-3a3a3a)]()
+[![Claude Code Skill](https://img.shields.io/badge/Claude_Code-Skill-orange)]()
 
 **一个给 Claude Code、Codex、Cursor 等 AI Agent 用的 Skill。** 读取主流 AI 平台的分享链接，自动识别 18 个平台入口、选择提取策略、输出干净对话文本。跨 agent 通用。
 
@@ -70,16 +70,21 @@ git clone https://github.com/Secret24/ai-share-reader.git ~/.claude/skills/ai-sh
 
 共 18 个平台入口，覆盖 16 个 AI 产品。每个平台均使用真实分享链接逐一测试验证。
 
+### 服务端渲染（HTTP 提取）
+
 | # | 平台 | 域名 |
 |---|------|------|
-| | **服务端渲染 · HTTP 提取** | |
 | 1 | Claude | `claude.ai/share/` |
 | 2 | Kimi | `kimi.com/share/` |
 | 3 | Perplexity | `perplexity.ai/search/` |
 | 4 | Poe | `poe.com/s/` |
 | 5 | Grok | `grok.com/share/` |
 | 6 | 元宝 | `yb.tencent.com/s/` |
-| | **客户端 SPA · 浏览器提取** | |
+
+### 客户端 SPA（浏览器提取）
+
+| # | 平台 | 域名 |
+|---|------|------|
 | 7 | DeepSeek | `chat.deepseek.com/share/` |
 | 8 | 千问 | `qianwen.com/share/chat/` |
 | 9 | 智谱 | `chat.z.ai/s/` · `chatglm.cn/share/` |
@@ -89,7 +94,11 @@ git clone https://github.com/Secret24/ai-share-reader.git ~/.claude/skills/ai-sh
 | 13 | Mistral | `chat.mistral.ai/chat/` |
 | 14 | Manus | `manus.im/share/` |
 | 15 | AnyGen | `anygen.io/task/` |
-| | **登录遮罩 · 浏览器提取** | |
+
+### 登录遮罩（浏览器提取）
+
+| # | 平台 | 域名 |
+|---|------|------|
 | 16 | ChatGPT | `chatgpt.com/share/` |
 | 17 | Gemini | `gemini.google.com/share/` |
 
