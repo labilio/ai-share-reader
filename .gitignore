@@ -173,7 +173,16 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-# Cursor  
+# Dev workspace (design docs, research, experiments — not published)
+dev/
+
+# Local Claude Code settings (personal, not for sharing)
+.claude/
+
+# Self-improvement learnings (local dev logs, not for sharing)
+.learnings/
+
+# Cursor
 #  Cursor is an AI-powered code editor.`.cursorignore` specifies files/directories to 
 #  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data
 #  refer to https://docs.cursor.com/context/ignore-files
