@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Agent-Agnostic](https://img.shields.io/badge/Agent-Agnostic-blueviolet)]()
-[![Claude Code Skill](https://img.shields.io/badge/Claude_Code-Skill-orange)]()
+[![Compatible](https://img.shields.io/badge/Compatible-Claude_Code_·_Codex_·_Cursor_·_OpenClaw_·_Hermes-3a3a3a)]()
 
 **一个给 Claude Code、Codex、Cursor 等 AI Agent 用的 Skill。** 读取主流 AI 平台的分享链接，自动识别 18 个平台入口、选择提取策略、输出干净对话文本。跨 agent 通用。
 
@@ -181,6 +181,10 @@ ai-share-reader/
 ### 4. 多 Agent 适配
 
 跨平台适配方案参考了 [huashu-design](https://github.com/alchaincyf/huashu-design) 的设计——工具名不写入指令，能力映射表替代具体工具名，让不同 agent 平台用自己的工具完成相同能力。
+
+---
+
+站在巨人的肩膀上，向 Anthropic Skills 团队和 huashu-design 作者致敬。优秀的开源工作让后来者不必从零开始。
 
 ## 许可
 
