@@ -2,7 +2,7 @@
 
 > _AI 分享链接扔进来，干净的对话吐出去。_
 
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![License](https://img.shields.io/badge/License-Apache_2.0-green)](LICENSE)
 [![Agent-Agnostic](https://img.shields.io/badge/Agent-Agnostic-blueviolet)]()
 [![Claude Code Skill](https://img.shields.io/badge/Claude_Code-Skill-orange)]()
 
@@ -225,4 +225,4 @@ ai-share-reader/
 
 ## 许可
 
-MIT
+Apache 2.0
