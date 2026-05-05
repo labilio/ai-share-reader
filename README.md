@@ -8,7 +8,7 @@
 读取主流 AI 平台分享链接中的对话内容。支持 18 个平台入口，自动识别平台、选择提取策略、输出干净对话。跨 agent 通用。
 
 ```bash
-npx skills add Secret24/ai-share-reader
+git clone https://github.com/Secret24/ai-share-reader.git ~/.claude/skills/ai-share-reader
 ```
 
 ## 为什么需要这个 Skill
@@ -46,7 +46,7 @@ npx skills add Secret24/ai-share-reader
 
 ```
 你: https://chat.deepseek.com/share/xxxxxxxxxxxxxxxxxxxxxxx
-你: 点击查看元宝的回答 https://yb.tencent.com/s/bh2IEpIIULLZ
+你: 点击查看元宝的回答 https://yb.tencent.com/s/xxxxxxxxxxxxxx
 你: https://claude.ai/share/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
@@ -68,25 +68,37 @@ npx skills add Secret24/ai-share-reader
 
 共 18 个平台入口，覆盖 16 个 AI 产品。每个平台均使用真实分享链接逐一测试验证。
 
-| 平台 | 域名 | 提取方式 |
-|------|------|----------|
-| Claude | `claude.ai/share/` | HTTP |
-| Kimi | `kimi.com/share/` | HTTP |
-| Perplexity | `perplexity.ai/search/` | HTTP |
-| Poe | `poe.com/s/` | HTTP |
-| Grok | `grok.com/share/` | HTTP |
-| 元宝 | `yb.tencent.com/s/` | HTTP |
-| ChatGPT | `chatgpt.com/share/` | 浏览器 |
-| Gemini | `gemini.google.com/share/` | 浏览器 |
-| DeepSeek | `chat.deepseek.com/share/` | 浏览器 |
-| 千问 | `qianwen.com/share/chat/` | 浏览器 |
-| 智谱 | `chat.z.ai/s/` `chatglm.cn/share/` | 浏览器 |
-| 豆包 | `doubao.com/thread/` | 浏览器 |
-| Minimax | `agent.minimaxi.com` `agent.minimax.io` | 浏览器 |
-| 文心一言 | `yiyan.baidu.com/share/` | 浏览器 |
-| Mistral | `chat.mistral.ai/chat/` | 浏览器 |
-| Manus | `manus.im/share/` | 浏览器 |
-| AnyGen | `anygen.io/task/` | 浏览器 |
+### 服务端渲染（HTTP 提取）
+
+| 平台 | 域名 |
+|------|------|
+| Claude | `claude.ai/share/` |
+| Kimi | `kimi.com/share/` |
+| Perplexity | `perplexity.ai/search/` |
+| Poe | `poe.com/s/` |
+| Grok | `grok.com/share/` |
+| 元宝 | `yb.tencent.com/s/` |
+
+### 客户端 SPA（浏览器提取）
+
+| 平台 | 域名 |
+|------|------|
+| DeepSeek | `chat.deepseek.com/share/` |
+| 千问 | `qianwen.com/share/chat/` |
+| 智谱 | `chat.z.ai/s/` · `chatglm.cn/share/` |
+| 豆包 | `doubao.com/thread/` |
+| Minimax | `agent.minimaxi.com` · `agent.minimax.io` |
+| 文心一言 | `yiyan.baidu.com/share/` |
+| Mistral | `chat.mistral.ai/chat/` |
+| Manus | `manus.im/share/` |
+| AnyGen | `anygen.io/task/` |
+
+### 登录遮罩（浏览器提取）
+
+| 平台 | 域名 |
+|------|------|
+| ChatGPT | `chatgpt.com/share/` |
+| Gemini | `gemini.google.com/share/` |
 
 ## 仓库结构
 
