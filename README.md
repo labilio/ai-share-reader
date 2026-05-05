@@ -150,19 +150,15 @@ ai-share-reader/
 - **description 是触发核心**：Skill 能不能被正确触发，关键在 frontmatter 的 description，要写得偏"pushy"（Claude 倾向于欠触发）
 - **保持 SKILL.md < 500 行**：超过就拆出 references/，Claude 只读需要的那份
 
-详见 `dev/ANTHROPIC_SKILL_PATTERNS.md`。
-
 ### 2. 审计全部 17 个官方 Skill
 
 光知道原则不够——需要看真实案例。于是把 Anthropic 全部 17 个 Skill 逐一拆解，按复杂度分成六个等级（Level 0 ~ Level 5），分析每种文件什么时候该出现、什么时候不该出现：
 
 | 发现 | 结论 |
 |------|------|
-| scripts/ 只在处理二进制/打包/验证时出现 | ai-share-reader 不需要脚本，不加 |
-| examples/ 不限于 .py——internal-comms 就有 `.md` 示例 | 我们的 `examples/` 目录有先例支撑 |
+| scripts/ 里全是 Python 脚本，只做 Agent 做不好的事：二进制读写（PDF/DOCX/XLSX）、打包构建、确定性计算 | ai-share-reader 的核心逻辑是"判断平台 → 选策略 → 提取"，全是 Agent 擅长的决策和文本处理，不需要 Python |
+| examples/ 不限于 `.py`——internal-comms 就有 `.md` 示例 | 我们的 `examples/` 目录有先例支撑 |
 | 没有一个 Skill 是为了"看起来复杂"而加文件 | 保持诚实：Level 0 就是最合适的结构 |
-
-详见 `dev/ANTHROPIC_SKILLS_FULL_AUDIT.md`。
 
 ### 3. 落地到 ai-share-reader
 
@@ -171,7 +167,7 @@ ai-share-reader/
 - **SKILL.md 不到 500 行**，不需要拆分 references/——保持简单
 - **examples/ 保留**——每个平台一个 `.md` 样例，既是文档也是测试预期
 - **不用 MUST/ALWAYS 堆砌规则**——每个平台策略写清楚"为什么"这么做
-- **不做假复杂度**——不加 scripts/ 来装点门面，Anthropic 自己都不这么干
+- **不加 Python 脚本**——Anthropic 的 scripts/ 只在处理二进制文件（PDF、DOCX）、打包构建、需要确定性计算时才出现。我们这个 Skill 做的事——识别域名、选择策略、文本提取——全是 Agent 原生擅长的，不需要 Python 代劳
 
 ### 4. 多 Agent 适配
 
