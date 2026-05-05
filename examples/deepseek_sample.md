@@ -1,4 +1,4 @@
-# DeepSeek sample
+# DeepSeek share example
 
 ## Input
 

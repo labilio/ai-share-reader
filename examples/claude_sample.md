@@ -1,4 +1,4 @@
-# Claude sample
+# Claude share example
 
 ## Input
 
@@ -15,6 +15,5 @@ https://claude.ai/share/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
 **Assistant:** BBC Six Minute English is a free, short-form English learning
 podcast produced by BBC Learning English. Each episode is approximately six
-minutes long and covers a topical subject while teaching useful English
-vocabulary and phrases.
+minutes long and covers a topical subject.
 ```

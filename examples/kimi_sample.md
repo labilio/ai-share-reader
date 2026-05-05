@@ -1,4 +1,4 @@
-# Kimi sample
+# Kimi share example
 
 ## Input
 
@@ -14,7 +14,7 @@ https://www.kimi.com/share/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 # Kimi 成立与投资
 
-**User:** Kimi 是什么时候成立的？Kimi 的母公司是什么？
+**User:** Kimi 是什么时候成立的？
 
 **Assistant:** Kimi 是由月之暗面（Moonshot AI）开发的。
 - 月之暗面 成立于 2023 年 3 月
