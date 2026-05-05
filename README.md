@@ -51,27 +51,35 @@ git clone https://github.com/Secret24/ai-share-reader.git ~/.claude/skills/ai-sh
 
 直接粘贴链接即可，支持夹带广告语的容错输入：
 
-> https://chat.deepseek.com/share/xxxxxxxxxxxxxxxxxxxxxxx
->
-> 点击查看元宝的回答 https://yb.tencent.com/s/xxxxxxxxxxxxxx
->
-> https://claude.ai/share/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+https://chat.deepseek.com/share/xxxxxxxxxxxxxxxxxxxxxxx
+```
+
+```
+点击查看元宝的回答 https://yb.tencent.com/s/xxxxxxxxxxxxxx
+```
+
+```
+https://claude.ai/share/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
 
 Skill 自动识别平台并提取：
 
-> **对话标题**
->
-> **User:** 用户的问题
-> **Assistant:** AI 的回答
->
-> **User:** 追问
-> **Assistant:** 后续回答
+```
+对话标题
+
+User: 用户的问题
+Assistant: AI 的回答
+
+User: 追问
+Assistant: 后续回答
+```
 
 ## 支持平台
 
 共 18 个平台入口，覆盖 16 个 AI 产品。每个平台均使用真实分享链接逐一测试验证。
 
-### 服务端渲染（HTTP 提取）
+### A 类 · 服务端渲染（HTTP 提取）
 
 | # | 平台 | 域名 |
 |---|------|------|
@@ -82,7 +90,7 @@ Skill 自动识别平台并提取：
 | 5 | Grok | `grok.com/share/` |
 | 6 | 元宝 | `yb.tencent.com/s/` |
 
-### 客户端 SPA（浏览器提取）
+### B 类 · 客户端 SPA（浏览器提取）
 
 | # | 平台 | 域名 |
 |---|------|------|
@@ -96,7 +104,7 @@ Skill 自动识别平台并提取：
 | 14 | Manus | `manus.im/share/` |
 | 15 | AnyGen | `anygen.io/task/` |
 
-### 登录遮罩（浏览器提取）
+### C 类 · 登录遮罩（浏览器提取）
 
 | # | 平台 | 域名 |
 |---|------|------|
