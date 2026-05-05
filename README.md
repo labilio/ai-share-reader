@@ -56,17 +56,15 @@ git clone https://github.com/Secret24/ai-share-reader.git ~/.claude/skills/ai-sh
 
 输出：
 
-```
-# 对话标题
-
-**User:** 用户的问题
-
-**Assistant:** AI 的回答
-
-**User:** 追问
-
-**Assistant:** 后续回答
-```
+> **对话标题**
+>
+> **User:** 用户的问题
+>
+> **Assistant:** AI 的回答
+>
+> **User:** 追问
+>
+> **Assistant:** 后续回答
 
 ## 支持平台
 
