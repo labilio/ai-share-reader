@@ -18,7 +18,7 @@ git clone https://github.com/Secret24/ai-share-reader.git ~/.claude/skills/ai-sh
 
 ## 为什么你需要这个 Skill
 
-**场景一：跨设备，自己给自己传——一个没人解决过的痛点。**
+**场景一：跨设备，自己给自己传  ——  一个没人解决过的痛点。**
 
 **你其实并不是随时都在电脑前用 Claude Code 或 OpenClaw。**
 
