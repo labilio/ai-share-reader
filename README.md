@@ -70,21 +70,16 @@ git clone https://github.com/Secret24/ai-share-reader.git ~/.claude/skills/ai-sh
 
 共 18 个平台入口，覆盖 16 个 AI 产品。每个平台均使用真实分享链接逐一测试验证。
 
-### 服务端渲染（HTTP 提取）
-
 | # | 平台 | 域名 |
 |---|------|------|
+| | **服务端渲染 · HTTP 提取** | |
 | 1 | Claude | `claude.ai/share/` |
 | 2 | Kimi | `kimi.com/share/` |
 | 3 | Perplexity | `perplexity.ai/search/` |
 | 4 | Poe | `poe.com/s/` |
 | 5 | Grok | `grok.com/share/` |
 | 6 | 元宝 | `yb.tencent.com/s/` |
-
-### 客户端 SPA（浏览器提取）
-
-| # | 平台 | 域名 |
-|---|------|------|
+| | **客户端 SPA · 浏览器提取** | |
 | 7 | DeepSeek | `chat.deepseek.com/share/` |
 | 8 | 千问 | `qianwen.com/share/chat/` |
 | 9 | 智谱 | `chat.z.ai/s/` · `chatglm.cn/share/` |
@@ -94,11 +89,7 @@ git clone https://github.com/Secret24/ai-share-reader.git ~/.claude/skills/ai-sh
 | 13 | Mistral | `chat.mistral.ai/chat/` |
 | 14 | Manus | `manus.im/share/` |
 | 15 | AnyGen | `anygen.io/task/` |
-
-### 登录遮罩（浏览器提取）
-
-| # | 平台 | 域名 |
-|---|------|------|
+| | **登录遮罩 · 浏览器提取** | |
 | 16 | ChatGPT | `chatgpt.com/share/` |
 | 17 | Gemini | `gemini.google.com/share/` |
 
