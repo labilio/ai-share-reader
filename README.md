@@ -6,13 +6,14 @@
 [![Agent-Agnostic](https://img.shields.io/badge/Agent-Agnostic-blueviolet)]()
 [![Claude Code Skill](https://img.shields.io/badge/Claude_Code-Skill-orange)]()
 
-**一个给 Claude Code、Codex、Cursor 等 AI Agent 用的 Skill。** 读取主流 AI 平台的分享链接，自动识别 18 个平台入口、选择提取策略、输出干净对话文本。跨 agent 通用。
+**一个给 Claude Code、Codex、Openclaw、Hermes 等 AI Agent 用的 Skill。跨 Agent 通用。**
+
+ 读取主流 AI 平台的分享链接，自动识别 18 个平台入口、选择提取策略、输出干净对话文本。
 
 ```bash
-# 安装到 Claude Code
+# 安装到 Claude Code 或者你的其他 Agent 工具
+# 将仓库放到对应 skills 目录即可
 git clone https://github.com/Secret24/ai-share-reader.git ~/.claude/skills/ai-share-reader
-
-# 其他 Agent 同样：将仓库放到对应 skills 目录即可
 ```
 
 ## 为什么需要这个 Skill
@@ -48,22 +49,22 @@ git clone https://github.com/Secret24/ai-share-reader.git ~/.claude/skills/ai-sh
 
 ## 使用示例
 
-```
-你: https://chat.deepseek.com/share/xxxxxxxxxxxxxxxxxxxxxxx
-你: 点击查看元宝的回答 https://yb.tencent.com/s/xxxxxxxxxxxxxx
-你: https://claude.ai/share/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-```
+直接粘贴链接即可，支持夹带广告语的容错输入：
 
-输出：
+> https://chat.deepseek.com/share/xxxxxxxxxxxxxxxxxxxxxxx
+>
+> 点击查看元宝的回答 https://yb.tencent.com/s/xxxxxxxxxxxxxx
+>
+> https://claude.ai/share/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+
+Skill 自动识别平台并提取：
 
 > **对话标题**
 >
 > **User:** 用户的问题
->
 > **Assistant:** AI 的回答
 >
 > **User:** 追问
->
 > **Assistant:** 后续回答
 
 ## 支持平台
