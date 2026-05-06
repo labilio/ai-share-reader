@@ -10,10 +10,23 @@
 
  读取主流 AI 平台的分享链接，自动识别 18 个平台入口、选择提取策略、输出干净对话文本。
 
-```bash
-# 安装到 Claude Code 或者你的其他 Agent 工具
+## 安装
 
-git clone https://github.com/Secret24/ai-share-reader.git ~/.claude/skills/ai-share-reader
+### 方式一：下载 ZIP（推荐）
+
+从 [Releases](https://github.com/labilio/ai-share-reader/releases) 页面下载最新版本的 `ai-share-reader-vX.X.X.zip`，解压到你 Agent 的 skills 目录即可。
+
+以 Claude Code 为例：
+
+```bash
+# 解压到 Claude Code 的 skills 目录
+unzip ai-share-reader-v*.zip -d ~/.claude/skills/
+```
+
+### 方式二：Git Clone
+
+```bash
+git clone https://github.com/labilio/ai-share-reader.git ~/.claude/skills/ai-share-reader
 ```
 
 ## 为什么你需要这个 Skill
