@@ -52,9 +52,6 @@ Each turn is clearly labeled with the speaker role. Keep the formatting simple a
 | Poe | `poe.com/s/` | Server-rendered | HTTP fetch |
 | Grok | `grok.com/share/` | Server-rendered | HTTP fetch |
 | 元宝 | `yb.tencent.com/s/` | Server-rendered | HTTP fetch |
-| **Group C: Login Overlay** |
-| ChatGPT | `chatgpt.com/share/` | Server-rendered behind login overlay | Browser automation |
-| Gemini | `gemini.google.com/share/` | Server-rendered behind login overlay | Browser automation |
 | **Group B: Client-Rendered SPA** |
 | DeepSeek | `chat.deepseek.com/share/` | Client-rendered SPA | Browser automation |
 | 千问 | `qianwen.com/share/chat/` | Client-rendered SPA | Browser automation |
@@ -66,12 +63,17 @@ Each turn is clearly labeled with the speaker role. Keep the formatting simple a
 | Mistral | `chat.mistral.ai/chat/` | Client-rendered SPA | Browser automation |
 | Manus | `manus.im/share/` | Client-rendered SPA | Browser automation |
 | AnyGen | `anygen.io/task/` | Client-rendered SPA | Browser automation |
+| **Group C: Login Overlay** |
+| ChatGPT | `chatgpt.com/share/` | Server-rendered behind login overlay | Browser automation |
+| Gemini | `gemini.google.com/share/` | Server-rendered behind login overlay | Browser automation |
 
 ## Flow
 
 1. Parse the URL domain to identify the platform
-2. Follow the extraction strategy for that platform (see below)
-3. Format the result using the output template above and present to the user
+2. Find the platform in the Quick Reference table to confirm its group and required capability
+3. Read only that platform's section in the extraction strategies below — skip the other platforms
+4. Read that platform's example file in `examples/` for reference
+5. Follow the extraction strategy and format the result using the output template above
 
 **Extracting URLs from surrounding text** — Many platforms (Kimi, 智谱清言, AnyGen, 元宝, 文心一言) auto-generate intro text when users copy share links, e.g. "点击查看元宝的回答 https://..." or "元宝团队成立于哪一年？点击查看元宝的回答 https://...". When the user pastes text containing a share URL, extract just the URL — don't require a bare URL.
 
@@ -79,7 +81,7 @@ Each turn is clearly labeled with the speaker role. Keep the formatting simple a
 
 When a tool fails, follow these boundaries:
 
-- **Same capability, different tool** — If one HTTP fetcher fails, try another HTTP fetcher your platform provides. For example: WebFetch fails → try WebReader, or curl, or a native HTTP client. This is fine.
+- **Same capability, different tool** — If one HTTP fetcher fails, try another HTTP fetcher your platform provides. Each agent platform offers different HTTP tools — switch to any alternative that performs the same function. This is fine.
 - **Do NOT silently cross capability boundaries** — If the platform's strategy says "HTTP fetch," don't silently open a browser instead. HTTP and browser automation are different capabilities with different costs (speed, resources, user expectations). Additionally, some server-rendered platforms (Perplexity) use anti-bot protection (Cloudflare Turnstile) that will block browser access. If all HTTP tools fail, tell the user what happened and let them decide whether to try a browser-based approach.
 - **Retry once before escalating** — Transient network errors are common. Retry once with the same tool before switching to a different one.
 - **Server-rendered = HTTP fetch only** — Claude, Kimi, Perplexity, Poe, Grok, and 元宝 are server-rendered. Never use browser automation for these six — HTTP fetch is the correct tool, and browser access may trigger anti-bot challenges.
@@ -141,7 +143,7 @@ These platforms render the conversation client-side — HTTP fetch alone returns
 **Extraction methods (defined once here, referenced by all platforms below):**
 
 - **Method A: JS extraction** — `document.querySelector('main')?.innerText || document.body.innerText`. Gets all messages at once regardless of conversation length. Works on any browser automation platform. Downside: raw output may include thinking process, search references, and UI elements — filter these out.
-- **Method B: Accessibility snapshot** — Chrome DevTools Protocol only. Cleaner, better-structured output. Downside: for long conversations (>5-6 rounds), need to scroll and take additional snapshots, then merge.
+- **Method B: Accessibility snapshot** — Captures the page's accessibility tree (W3C standard, supported by CDP, Playwright, Puppeteer, and most browser automation tools). Cleaner, better-structured output. Downside: for long conversations (>5-6 rounds), need to scroll and take additional snapshots, then merge.
 
 **Filter keywords** (appear in raw JS output on some platforms — skip these blocks):
 
@@ -152,7 +154,7 @@ These platforms render the conversation client-side — HTTP fetch alone returns
 | Minimax (国际版) | "Thinking Process X.XXs" | "Completed Web Search" |
 | 豆包 | — | "参考 N 篇资料" |
 
-**⚠️ Anti-patterns — DO NOT use these approaches:**
+**⚠️ Anti-patterns — avoid these approaches:**
 
 | Approach | Why it fails |
 |----------|-------------|
@@ -195,6 +197,7 @@ These platforms render the conversation client-side — HTTP fetch alone returns
 **Manus** — `manus.im/share/`
 
 - **Task replay pages** — the page replays the agent's multi-step execution (web searches, file operations, intermediate thinking), not a simple Q&A. The final output is the key deliverable; intermediate steps can be summarized parenthetically.
+- **Must use Method A (JS extraction):** the accessibility snapshot only shows UI chrome ("Manus 任务回放完成", "重看", "做同款") — the task execution content is not exposed to the a11y tree. Use `document.querySelector('main')?.innerText || document.body.innerText`.
 - Format: show the user's initial prompt, then the assistant's final deliverable.
 
 **AnyGen** — `anygen.io/task/`
