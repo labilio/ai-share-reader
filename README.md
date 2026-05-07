@@ -56,13 +56,15 @@ git clone https://github.com/labilio/ai-share-reader.git ~/.claude/skills/ai-sha
 - **链接里夹带广告语**——复制链接时平台会自动加上"点击查看 ××× 的回答 https://..."，还不能直接粘贴到浏览器，很麻烦
 - **每个平台界面不一样**——分享页充斥着侧边栏、推荐、登录按钮，只想快速看对话内容却很费劲
 
-**更深一层的问题是：每个 AI 平台的分享页设计逻辑完全不同。** 大致分为三大类，细分还有更多变种：
+**更深一层的问题是：每个 AI 平台的分享页设计逻辑完全不同。**
+
+ 大致分为三大类，细分还有更多变种：
 
 | 类型 | 代表平台 | 特点 |
 |------|---------|------|
-| 服务端渲染 | Claude、Kimi、Perplexity | 对话在 HTML 里，HTTP 请求即可拿到 |
-| 客户端 SPA | DeepSeek、千问、豆包、Manus | 对话在 JS 里，必须用浏览器渲染 |
-| 登录遮罩 | ChatGPT、Gemini | 对话已渲染但被登录框挡住，需特殊处理 |
+| A 类 · 服务端渲染 | Claude、Kimi、Perplexity | 对话在 HTML 里，HTTP 请求直接拿到 |
+| B 类 · 客户端 SPA | DeepSeek、千问、豆包、Manus | HTTP 能拿到 HTML，但是空壳——对话由 JS 动态生成，必须浏览器渲染 |
+| C 类 · 登录遮罩 | ChatGPT、Gemini | HTTP 直接被拦截（未登录），但浏览器打开后对话在遮罩背后已渲染，无需真正登录 |
 
 同一类里还有差别：Perplexity 有 Cloudflare 反爬、Gemini 的快照只能看到遮罩层、Manus 展示的是任务回放而非 Q&A……这意味着**每接入一个平台，都需要单独分析、单独适配**。
 
@@ -158,6 +160,10 @@ Assistant: 后续回答
 | 17 | Gemini | `gemini.google.com/share/` |
 
 
+
+B 类和 C 类虽然都用浏览器，但原因不同：**B 类是 HTTP 拿到了空壳**（内容不存在于 HTML 中，需要 JS 执行才能生成）；**C 类是 HTTP 根本拿不到**（被服务器拦截），但浏览器打开时遮罩背后内容已经在了，无需真正登录。
+
+---
 
 ### 补充说明
 
