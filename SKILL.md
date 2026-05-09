@@ -16,7 +16,7 @@ Extract AI chat conversations from mainstream platform share links and present t
 
 ## What this skill does
 
-- Accepts **one** share URL at a time
+- Accepts one or more share URLs at a time, same or mixed platforms
 - Identifies which AI platform the link comes from
 - Extracts the full conversation
 - Displays it as clean dialogue text directly to the user — no files saved to disk
@@ -66,6 +66,16 @@ Each turn is clearly labeled with the speaker role. Keep the formatting simple a
 | **Group C: Login Overlay** |
 | ChatGPT | `chatgpt.com/share/` | Server-rendered behind login overlay | Browser automation |
 | Gemini | `gemini.google.com/share/` | Server-rendered behind login overlay | Browser automation |
+
+## Handling multiple URLs
+
+If the user sends more than one share link:
+
+1. Extract all share URLs from the message
+2. Group them by platform
+3. If all from the same platform — read its strategy and example once, then process each URL in sequence through the Flow
+4. If mixed platforms — process each URL independently through the full Flow
+5. Present each conversation under its own heading, separated by `---`
 
 ## Flow
 
