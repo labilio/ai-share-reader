@@ -1,6 +1,7 @@
 # AI Share Reader
 
 > _AI 分享链接扔进来，干净的对话吐出去。_
+> _你手机上的 AI 对话记录，可以随时变成 Agent 的上下文。_
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-green)](LICENSE)
 [![Agent-Agnostic](https://img.shields.io/badge/Agent-Agnostic-blueviolet)]()
